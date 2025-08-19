@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Kontak Kami - Prife Indonesia')
-@section('description', 'Hubungi Prife Indonesia untuk pertanyaan seputar produk teknologi Terahertz dan solusi kesehatan.')
+@section('description', 'Hubungi Prife Indonesia untuk pertanyaan seputar produk teknologi Terahertz dan solusi
+kesehatan.')
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12">
@@ -27,4 +28,3 @@
     </div>
 </div>
 @endsection
-

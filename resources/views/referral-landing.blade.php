@@ -10,10 +10,10 @@
             <div class="text-gray-700 mb-1"><i class="fas fa-envelope mr-2"></i>{{ $user->email }}</div>
         </div>
         @if($user->whatsapp)
-            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $user->whatsapp ?? $user->phone) }}" target="_blank"
-               class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 text-lg font-semibold">
-                <i class="fab fa-whatsapp mr-2"></i>Hubungi via WhatsApp
-            </a>
+        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $user->whatsapp ?? $user->phone) }}" target="_blank"
+            class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 text-lg font-semibold">
+            <i class="fab fa-whatsapp mr-2"></i>Hubungi via WhatsApp
+        </a>
         @endif
     </div>
 </div>

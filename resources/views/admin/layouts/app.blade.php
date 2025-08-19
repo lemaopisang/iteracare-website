@@ -9,13 +9,11 @@
 </head>
 <body class="bg-gray-50 font-sans antialiased">
     <div class="min-h-screen">
-        <!-- Navigation -->
         <nav class="bg-white shadow-sm border-b border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
-                    <div class="flex">
-                        <!-- Logo -->
-                        <div class="flex-shrink-0 flex items-center">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
                             @if(auth()->user()->role === 'admin')
                                 <a href="{{ route('admin.dashboard') }}" class="text-xl font-bold text-blue-600">
                                     Iteracare Admin
@@ -31,7 +29,6 @@
                             @endif
                         </div>
 
-                        <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             @if(auth()->user()->role === 'admin')
                                 <a href="{{ route('admin.dashboard') }}"
@@ -59,7 +56,6 @@
                         </div>
                     </div>
 
-                    <!-- User Menu -->
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <div class="ml-3 relative">
                             <div class="flex items-center space-x-4">
@@ -80,10 +76,8 @@
             </div>
         </nav>
 
-        <!-- Page Content -->
         <main class="py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Flash Messages -->
                 @if(session('success'))
                     <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline">{{ session('success') }}</span>

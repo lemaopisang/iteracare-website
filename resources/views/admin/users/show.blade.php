@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="space-y-6">
-    <!-- Page Header -->
     <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
@@ -26,7 +25,6 @@
         </div>
     </div>
 
-    <!-- User Information -->
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
             <div class="flex items-center">
@@ -74,7 +72,6 @@
         </div>
     </div>
 
-    <!-- Social Media & Contact -->
     @if($user->instagram || $user->facebook || $user->whatsapp)
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
@@ -118,7 +115,6 @@
     </div>
     @endif
 
-    <!-- Referral Information -->
     @if($user->referralCode)
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
@@ -168,7 +164,6 @@
     </div>
     @endif
 
-    <!-- Sales Page Information -->
     @if($user->salesPage)
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
@@ -202,7 +197,6 @@
     </div>
     @endif
 
-    <!-- Danger Zone -->
     <div class="bg-white shadow overflow-hidden sm:rounded-lg border-l-4 border-red-400">
         <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 font-medium text-red-900">Danger Zone</h3>

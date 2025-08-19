@@ -101,9 +101,9 @@ class User extends Authenticatable
     /**
      * Get the referral code for this user (single, for admin panel compatibility)
      */
-    public function referralCode()
+    public function referralCode(): HasOne
     {
-        return $this->hasOne(ReferralCode::class);
+        return $this->hasOne(ReferralCode::class, 'user_id');
     }
 
     /**

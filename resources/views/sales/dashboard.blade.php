@@ -5,7 +5,6 @@
 @section("content")
 <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
         <div class="mb-8">
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <div class="flex items-center justify-between">
@@ -21,7 +20,6 @@
             </div>
         </div>
 
-        <!-- Quick Stats -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <div class="flex items-center">
@@ -30,7 +28,8 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-600">Total Testimoni Video</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ \App\Models\Testimonial::where('user_id', $user->id)->whereNotNull('video_file')->count() }}</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ \App\Models\Testimonial::where('user_id',
+                            $user->id)->whereNotNull('video_file')->count() }}</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +59,6 @@
             </div>
         </div>
 
-        <!-- Recent Testimonials -->
         @if($recentTestimonials->count() > 0)
         <div class="bg-white rounded-lg shadow-sm">
             <div class="p-6 border-b border-gray-200">
@@ -77,43 +75,45 @@
                     <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
                         <div class="flex-shrink-0">
                             @if($testimonial->video_file)
-                                <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-play text-red-600"></i>
-                                </div>
+                            <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-play text-red-600"></i>
+                            </div>
                             @elseif($testimonial->video_url)
-                                <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-play text-red-600"></i>
-                                </div>
+                            <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-play text-red-600"></i>
+                            </div>
                             @else
-                                <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-quote-left text-gray-500"></i>
-                                </div>
+                            <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-quote-left text-gray-500"></i>
+                            </div>
                             @endif
                         </div>
                         <div class="flex-1">
-                            {{-- Hidden identifier for system: author name --}}
-                            <span style="display:none" data-author="{{ optional($testimonial->user)->name }}"></span>
+                            <span data-author="{{ optional($testimonial->user)->name }}" style="display:none"></span>
                             <h4 class="font-semibold text-gray-900">{{ $testimonial->customer_name }}</h4>
                             <p class="text-sm text-gray-600 mt-1">{{ Str::limit($testimonial->content, 100) }}</p>
                             <div class="flex items-center mt-2 space-x-4">
-                                <span class="text-xs text-gray-500">{{ $testimonial->created_at->diffForHumans() }}</span>
+                                <span class="text-xs text-gray-500">{{ $testimonial->created_at->diffForHumans()
+                                    }}</span>
                             </div>
                             @if($testimonial->video_file)
-                                <div class="mt-2">
-                                    <video controls preload="metadata" class="w-full max-w-xs rounded shadow aspect-video" style="min-height:120px;max-height:200px;">
-                                        <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/mp4">
-                                        <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/webm">
-                                        <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
+                            <div class="mt-2">
+                                <video controls preload="metadata" class="w-full max-w-xs rounded shadow aspect-video"
+                                    style="min-height:120px;max-height:200px;">
+                                    <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/mp4">
+                                    <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/webm">
+                                    <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/ogg">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                             @elseif($testimonial->video_url)
-                                <div class="mt-2">
-                                    <a href="{{ $testimonial->video_url }}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm">
-                                        <i class="fas fa-video mr-1"></i>
-                                        Lihat Video Testimoni
-                                    </a>
-                                </div>
+                            <div class="mt-2">
+                                <a href="{{ $testimonial->video_url }}" target="_blank"
+                                    class="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm">
+                                    <i class="fas fa-video mr-1"></i>
+                                    Lihat Video Testimoni
+                                </a>
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -128,7 +128,8 @@
             </div>
             <h3 class="text-lg font-semibold text-gray-900 mb-2">Belum Ada Testimoni</h3>
             <p class="text-gray-600 mb-4">Mulai upload testimoni video pertama Anda untuk membantu promosi produk.</p>
-            <a href="{{ route('sales.testimonials') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <a href="{{ route('sales.testimonials') }}"
+                class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 <i class="fas fa-plus mr-2"></i> Upload Testimoni
             </a>
         </div>
@@ -136,4 +137,3 @@
     </div>
 </div>
 @endsection
-

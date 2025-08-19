@@ -46,4 +46,43 @@ class HomeController extends Controller
 
         return back()->with('success', 'Thank you for your message! We will get back to you soon.');
     }
+
+    /**
+     * Handle referral search submitted from the footer form.
+     * If a matching active sales user is found, redirect to WhatsApp when available
+     * or return back with the user's contact details in the session.
+     */
+    public function searchReferral(Request $request)
+    {
+        $request->validate([
+            'referral_code' => 'required|string|max:255',
+        ]);
+
+        $search = trim($request->input('referral_code'));
+
+        $user = \App\Models\User::where('role', 'sales')
+            ->where('is_active', true)
+            ->where(function ($q) use ($search) {
+                $q->where('referral_code', $search)
+                  ->orWhere('name', $search);
+            })
+            ->first();
+
+        if ($user) {
+            // Prefer redirecting to WhatsApp if phone is available
+            if (!empty($user->whatsapp)) {
+                $phone = preg_replace('/[^0-9]/', '', $user->whatsapp);
+                return redirect()->away("https://wa.me/{$phone}");
+            }
+
+            // Otherwise return back with the contact info so the UI can show it
+            return back()->with('referral_result', [
+                'name' => $user->name,
+                'phone' => $user->phone,
+                'email' => $user->email,
+            ]);
+        }
+
+        return back()->with('error', 'Tidak ditemukan sales representative dengan nama atau kode referral tersebut');
+    }
 }

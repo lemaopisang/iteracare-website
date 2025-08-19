@@ -84,6 +84,9 @@ Route::prefix("sales")->name("sales.")->group(function () {
     Route::post("/testimonials", [App\Http\Controllers\SalesDashboardController::class, "storeTestimonial"])->name("testimonials.store");
 });
 
+// Referral search POST route used by the footer form
+Route::post('/search-referral', [HomeController::class, 'searchReferral'])->name('search.referral');
+
 // Catch-all referral route (after all other routes)
 Route::get('/{referral}', function ($referral) {
     // Prevent hijacking system routes
