@@ -68,6 +68,36 @@ class HomeController extends Controller
             })
             ->first();
 
+        // If the client expects JSON (AJAX), return structured JSON instead of redirects
+        if ($request->wantsJson()) {
+            if ($user) {
+                if (!empty($user->whatsapp)) {
+                    $phone = preg_replace('/[^0-9]/', '', $user->whatsapp);
+                    $waUrl = "https://wa.me/{$phone}";
+                    return response()->json([
+                        'found' => true,
+                        'wa' => $waUrl,
+                        'referral' => [
+                            'name' => $user->name,
+                            'phone' => $user->phone,
+                            'email' => $user->email,
+                        ],
+                    ]);
+                }
+
+                return response()->json([
+                    'found' => true,
+                    'referral' => [
+                        'name' => $user->name,
+                        'phone' => $user->phone,
+                        'email' => $user->email,
+                    ],
+                ]);
+            }
+
+            return response()->json(['found' => false, 'message' => 'Tidak ditemukan sales representative dengan nama atau kode referral tersebut'], 404);
+        }
+
         if ($user) {
             // Prefer redirecting to WhatsApp if phone is available
             if (!empty($user->whatsapp)) {

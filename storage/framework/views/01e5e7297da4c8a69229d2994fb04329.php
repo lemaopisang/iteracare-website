@@ -1,10 +1,8 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Kontak Kami - Prife Indonesia'); ?>
+<?php $__env->startSection('description', 'Hubungi Prife Indonesia untuk pertanyaan seputar produk teknologi Terahertz dan solusi
+kesehatan.'); ?>
 
-@section('title', 'Kontak Kami - Prife Indonesia')
-@section('description', 'Hubungi Prife Indonesia untuk pertanyaan seputar produk teknologi Terahertz dan solusi
-kesehatan.')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -31,4 +29,6 @@ kesehatan.')
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\manus\v3\iteracare-website\resources\views/contact.blade.php ENDPATH**/ ?>

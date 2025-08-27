@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  /* Floating background blobs animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Gentle hero entrance */
+  .animate-fade-in-up {
+    animation: fade-in-up 700ms ease forwards;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-10px) translateX(4px);
+    }
+    50% {
+      transform: translateY(-18px) translateX(0px);
+    }
+    75% {
+      transform: translateY(-10px) translateX(-4px);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

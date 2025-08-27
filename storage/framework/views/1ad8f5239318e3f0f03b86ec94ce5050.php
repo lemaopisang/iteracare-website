@@ -1,7 +1,5 @@
-@extends('layouts.app')
-
-@section('title', 'Penjelasan')
-@section('content')
+<?php $__env->startSection('title', 'Penjelasan'); ?>
+<?php $__env->startSection('content'); ?>
 <section id="penjelasan" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-bold text-center mb-12">Penjelasan</h2>
@@ -9,7 +7,7 @@
             <div class="flex flex-col items-start">
                 <div class="bg-white rounded-xl shadow p-6 w-full h-full flex flex-col">
                     <a href="#terahertz" class="mx-auto">
-                        <img src="{{ asset('prifeindonesia_images/Terahertz.jpg') }}" alt="Terahertz"
+                        <img src="<?php echo e(asset('prifeindonesia_images/Terahertz.jpg')); ?>" alt="Terahertz"
                             class="mb-6 rounded-xl shadow-lg w-full max-w-xs md:max-w-sm h-40 md:h-48 object-cover">
                     </a>
                     <h3 class="text-2xl font-bold mb-2 text-left"><a href="#terahertz"
@@ -24,7 +22,7 @@
             <div class="flex flex-col items-start">
                 <div class="bg-white rounded-xl shadow p-6 w-full h-full flex flex-col">
                     <a href="#limfatik" class="mx-auto">
-                        <img src="{{ asset('prifeindonesia_images/Lymphatic.jpg') }}" alt="Sistem Limfatik"
+                        <img src="<?php echo e(asset('prifeindonesia_images/Lymphatic.jpg')); ?>" alt="Sistem Limfatik"
                             class="mb-6 rounded-xl shadow-lg w-full max-w-xs md:max-w-sm h-40 md:h-48 object-cover">
                     </a>
                     <h3 class="text-2xl font-bold mb-2 text-left"><a href="#limfatik" class="text-blue-700 hover:underline">Sistem
@@ -40,7 +38,7 @@
             <div class="flex flex-col items-start">
                 <div class="bg-white rounded-xl shadow p-6 w-full h-full flex flex-col">
                     <a href="#pemf" class="mx-auto">
-                        <img src="{{ asset('prifeindonesia_images/PEMF.jpg') }}" alt="PEMF"
+                        <img src="<?php echo e(asset('prifeindonesia_images/PEMF.jpg')); ?>" alt="PEMF"
                             class="mb-6 rounded-xl shadow-lg w-full max-w-xs md:max-w-sm h-40 md:h-48 object-cover">
                     </a>
                     <h3 class="text-2xl font-bold mb-2 text-left"><a href="#pemf" class="text-blue-700 hover:underline">Pulsed
@@ -57,7 +55,7 @@
             <div class="flex flex-col items-start">
                 <div class="bg-white rounded-xl shadow p-6 w-full h-full flex flex-col">
                     <a href="#ion" class="mx-auto">
-                        <img src="{{ asset('prifeindonesia_images/Ion.jpg') }}" alt="Ion"
+                        <img src="<?php echo e(asset('prifeindonesia_images/Ion.jpg')); ?>" alt="Ion"
                             class="mb-6 rounded-xl shadow-lg w-full max-w-xs md:max-w-sm h-40 md:h-48 object-cover">
                     </a>
                     <h3 class="text-2xl font-bold mb-2 text-left"><a href="#ion" class="text-blue-700 hover:underline">Ion</a></h3>
@@ -87,4 +85,6 @@
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\manus\v3\iteracare-website\resources\views/penjelasan.blade.php ENDPATH**/ ?>

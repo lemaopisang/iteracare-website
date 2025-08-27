@@ -1,11 +1,11 @@
 <div class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white">
-    @if(request()->route() && request()->route()->getName() !== 'penjelasan')
+    <?php if(request()->route() && request()->route()->getName() !== 'penjelasan'): ?>
     <div class="max-w-3xl mx-auto px-4 py-6">
         <div class="bg-white rounded-xl shadow-lg p-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
             <div class="md:col-span-2">
-                <form id="referral-form" method="POST" action="{{ route('search.referral') }}" class="flex items-center gap-2">
-                    @csrf
-                    <input id="referral-input" name="referral_code" type="text" value="{{ session('referral_name') ?? '' }}"
+                <form id="referral-form" method="POST" action="<?php echo e(route('search.referral')); ?>" class="flex items-center gap-2">
+                    <?php echo csrf_field(); ?>
+                    <input id="referral-input" name="referral_code" type="text" value="<?php echo e(session('referral_name') ?? ''); ?>"
                         placeholder="Masukkan nama atau kode referral"
                         class="flex-1 px-4 py-3 rounded-lg border text-black border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400" />
                     <button id="referral-btn" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">Cari</button>
@@ -14,25 +14,26 @@
             </div>
         </div>
 
-        @if(session('referral_result'))
+        <?php if(session('referral_result')): ?>
         <div class="max-w-3xl mx-auto px-4 py-4 mt-2">
             <div class="bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg">
-                <strong>{{ session('referral_result.name') }}</strong>
-                <div class="text-sm">Phone: {{ session('referral_result.phone') ?? 'N/A' }}</div>
-                <div class="text-sm">Email: {{ session('referral_result.email') ?? 'N/A' }}</div>
+                <strong><?php echo e(session('referral_result.name')); ?></strong>
+                <div class="text-sm">Phone: <?php echo e(session('referral_result.phone') ?? 'N/A'); ?></div>
+                <div class="text-sm">Email: <?php echo e(session('referral_result.email') ?? 'N/A'); ?></div>
             </div>
         </div>
-        @endif
+        <?php endif; ?>
 
-        @if(session('error'))
+        <?php if(session('error')): ?>
         <div class="max-w-3xl mx-auto px-4 py-4 mt-2">
             <div class="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg">
-                {{ session('error') }}
+                <?php echo e(session('error')); ?>
+
             </div>
         </div>
-        @endif
+        <?php endif; ?>
     </div>
-    @endif
+    <?php endif; ?>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,14 +52,14 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="{{ route('home') }}"
+                        <li><a href="<?php echo e(route('home')); ?>"
                                 class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></li>
-                        <li><a href="{{ route('testimonials') }}"
+                        <li><a href="<?php echo e(route('testimonials')); ?>"
                                 class="text-gray-300 hover:text-white transition-colors duration-200">Testimonials</a>
                         </li>
-                        <li><a href="{{ route('contact') }}"
+                        <li><a href="<?php echo e(route('contact')); ?>"
                                 class="text-gray-300 hover:text-white transition-colors duration-200">Contact</a></li>
-                        <li><a href="{{ route('penjelasan') }}"
+                        <li><a href="<?php echo e(route('penjelasan')); ?>"
                                 class="text-gray-300 hover:text-white transition-colors duration-200">Penjelasan</a>
                         </li>
                     </ul>
@@ -85,7 +86,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm">
-                    © {{ date("Y") }} Iteracare. All rights reserved.
+                    © <?php echo e(date("Y")); ?> Iteracare. All rights reserved.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Privacy
@@ -171,3 +172,4 @@
 
     })();
 </script>
+<?php /**PATH C:\laragon\www\manus\v3\iteracare-website\resources\views/partials/footer.blade.php ENDPATH**/ ?>

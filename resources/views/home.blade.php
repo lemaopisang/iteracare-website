@@ -12,13 +12,13 @@ the revolutionary power of Terahertz technology with Prife Indonesia.')
         style="animation-delay: 1s;"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="animate-fade-in-up">
+        <div class="animate-fade-in-up text-center">
             <div class="mb-8">
                 <img src="{{ asset('prifeindonesia_images/prife_logo.png') }}" alt="Prife Indonesia"
                     class="mx-auto h-24 md:h-32 object-contain">
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-center">
                 <span class="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
                     Prife
                 </span>
@@ -29,18 +29,18 @@ the revolutionary power of Terahertz technology with Prife Indonesia.')
                 </span>
             </h1>
 
-            <p class="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed text-center">
                 "Bersama kami, wujudkan masa depan yang lebih baik dengan inovasi dan kualitas terbaik."
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#trilogy"
-                    class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base sm:text-lg hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow">
                     <i class="fas fa-leaf mr-2"></i>
                     Trilogy of Wellness
                 </a>
                 <a href="#iteracare"
-                    class="bg-white text-slate-700 px-8 py-4 rounded-xl font-semibold text-lg border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    class="bg-white text-slate-700 px-6 py-3 rounded-lg font-semibold text-base sm:text-lg border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow">
                     <i class="fas fa-heartbeat mr-2"></i>
                     iTeraCare Technology
                 </a>
@@ -190,14 +190,6 @@ the revolutionary power of Terahertz technology with Prife Indonesia.')
                     <div class="flex items-center text-slate-700">
                         <i class="fas fa-check text-orange-500 mr-3"></i>
                         <span>Meningkatkan Sirkulasi Darah</span>
-                    </div>
-                    <div class="flex items-center text-slate-700">
-                        <i class="fas fa-check text-orange-500 mr-3"></i>
-                        <span>Membantu Detoksifikasi & Kesehatan Kulit</span>
-                    </div>
-                    <div class="flex items-center text-slate-700">
-                        <i class="fas fa-check text-orange-500 mr-3"></i>
-                        <span>Dan Masih Banyak Lagi</span>
                     </div>
                 </div>
             </div>
@@ -419,11 +411,10 @@ the revolutionary power of Terahertz technology with Prife Indonesia.')
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             @foreach($featuredTestimonials as $testimonial)
             <div
-                class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <div class="aspect-video bg-gray-100 rounded-lg mb-4 relative overflow-hidden">
+                class="bg-white rounded-2xl p-6 shadow hover:shadow-md transition-all duration-300">
+                <div class="w-full bg-gray-100 rounded-lg mb-4 relative overflow-hidden" style="aspect-ratio: 16 / 9;">
                     @if($testimonial->video_file)
-                    <video controls preload="metadata" class="w-full h-full max-h-96 rounded-lg"
-                        style="object-fit:cover;">
+                    <video controls preload="metadata" class="w-full h-full object-cover rounded-lg">
                         <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/mp4">
                         <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/webm">
                         <source src="{{ asset('storage/' . $testimonial->video_file) }}" type="video/ogg">
@@ -434,7 +425,7 @@ the revolutionary power of Terahertz technology with Prife Indonesia.')
                     $videoId = '';
                     if (strpos($testimonial->video_url, 'youtube.com') !== false || strpos($testimonial->video_url,
                     'youtu.be') !== false) {
-                    preg_match('/(?:youtube\\.com\\/(?:[^\\/]+\\/.+\\/|(?:v|e(?:mbed)?)\\/|.*[?&]v=)|youtu\\.be\\/)([^\"&?\\/\\s]{11})/',
+                    preg_match('/(?:youtube\\.com\\/(?:[^\\/]+\\/.+\\/|(?:v|e(?:mbed)?)\\/|.*[?&]v=)|youtu\\.be\\/)([^"&?\\/\\s]{11})/',
                     $testimonial->video_url, $matches);
                     $videoId = $matches[1] ?? '';
                     $thumbnailUrl = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
@@ -455,7 +446,7 @@ the revolutionary power of Terahertz technology with Prife Indonesia.')
                     </div>
                     @endif
                 </div>
-                <h4 class="font-bold text-slate-800 mb-2">{{ $testimonial->customer_name }}</h4>
+                <h4 class="font-bold text-slate-800 mb-2 text-center">{{ $testimonial->customer_name }}</h4>
                 <p class="text-slate-600 text-sm mb-3 line-clamp-3">{{ Str::limit($testimonial->content, 100) }}</p>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">

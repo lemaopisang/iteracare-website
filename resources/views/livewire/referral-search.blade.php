@@ -11,7 +11,7 @@
                     <div class="flex-1 relative">
                         <input type="text" wire:model.live.debounce.300ms="search"
                             placeholder="Masukkan nama atau kode referral (misal: Sarah Johnson)"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg text-black"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-lg text-black"
                             wire:keydown.enter="searchReferral">
                         @if($isLoading)
                         <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -22,7 +22,7 @@
                     <button wire:click="searchReferral"
                         class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 font-medium"
                         wire:loading.attr="disabled">
-                        <i class="fas fa-search mr-2"></i>Hubungi Kami
+                        <i class="fas fa-search mr-2"></i>Cari
                     </button>
                     @if($search)
                     <button wire:click="clearSearch"
@@ -55,13 +55,12 @@
                                         <i class="fab fa-whatsapp mr-2"></i>WhatsApp
                                     </a>
                                     @endif
+                                    <a href="mailto:{{ $foundUser->email }}" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-lg">
+                                        <i class="fas fa-envelope mr-2"></i>{{ $foundUser->email }}
+                                    </a>
                                     <span
                                         class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-lg">
                                         <i class="fas fa-phone mr-2"></i>{{ $foundUser->phone }}
-                                    </span>
-                                    <span
-                                        class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-lg">
-                                        <i class="fas fa-envelope mr-2"></i>{{ $foundUser->email }}
                                     </span>
                                 </div>
                             </div>
